@@ -74,6 +74,8 @@
   .tag{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.02em;padding:2px 8px;border-radius:5px}
   .tag.sap{background:#EAF2FB;color:var(--sap)} .tag.ai{background:#EFEBFA;color:var(--ai)}
   .tag.ui5{background:#E7F3EC;color:var(--ui5)} .tag.etc{background:#EEF1F5;color:var(--etc)}
+  .tag.abap{background:#E9EBF7;color:#3D4EA8}
+  .cover.abap{background:radial-gradient(120% 140% at 12% 0%,#4C5BC0 0%,#3D4EA8 45%,#242E66 100%)}
   .card-title{font-size:20px;font-weight:750;line-height:1.32;letter-spacing:-.01em;color:var(--ink)}
   .card-blurb{font-size:14.5px;color:var(--ink-soft);line-height:1.62;flex:1}
   .card-go{font-size:13.5px;font-weight:700;color:var(--accent);margin-top:.4rem;letter-spacing:.01em}
@@ -123,9 +125,24 @@
 <!-- 새 글 : 개별 글로 바로 가는 큰 카드 (주인공) -->
 <section>
   <div class="wrap">
-    <div class="eyebrow">새 글 · Latest <span class="count">2</span></div>
+    <div class="eyebrow">새 글 · Latest <span class="count">3</span></div>
     <p class="sec-lead">가장 최근 글부터. 카드를 누르면 바로 글로 이동합니다.</p>
     <div class="cards">
+
+      <div class="card">
+        <a class="card-hit" href="./ABAP/guide-unit01-05/">
+          <div class="cover abap">
+            <div class="cv-dots"><span style="background:#FF6B5E"></span><span style="background:#FFD166"></span><span style="background:#7CE0A3"></span></div>
+            <span class="cv-tag">GUIDE · 작성 중</span>
+          </div>
+          <div class="card-body">
+            <div class="tags"><span class="tag abap">ABAP</span><span class="tag sap">기초</span></div>
+            <div class="card-title">SAP ABAP 개발 가이드 (UNIT 01–05)</div>
+            <p class="card-blurb">SAP ERP History·Landscape부터 System Navigation, ABAP Repository·Workbench, 기본 프로그래밍까지 — 실습 화면과 코드로 정리한 ABAP 학습 가이드입니다. (계속 업데이트되는 작성 중 문서)</p>
+            <span class="card-go">읽기 →</span>
+          </div>
+        </a>
+      </div>
 
       <div class="card">
         <a class="card-hit" href="./RAP/password-change-api/">
@@ -164,9 +181,10 @@
 <!-- 주제 : 카테고리로 둘러보기 (보조 칩) -->
 <section>
   <div class="wrap">
-    <div class="eyebrow">주제 · Topics <span class="count">2</span></div>
+    <div class="eyebrow">주제 · Topics <span class="count">3</span></div>
     <p class="sec-lead">주제별로 모아 봅니다. 각 주제 아래에 사례·가이드가 쌓입니다. (AI 등 성격은 카드에 태그로 표시)</p>
     <div class="topics">
+      <a class="topic" href="./ABAP/"><span class="dot" style="background:#3D4EA8"></span>ABAP<span class="tc">1편</span></a>
       <a class="topic" href="./RAP/"><span class="dot" style="background:var(--sap)"></span>RAP<span class="tc">1편</span></a>
       <a class="topic" href="./ui5/"><span class="dot" style="background:var(--ui5)"></span>UI5<span class="tc">2편</span></a>
     </div>
@@ -177,6 +195,11 @@
   <div class="wrap">
     <div class="eyebrow">저장소 · Repositories</div>
     <div class="repos">
+      <a class="repo" href="https://github.com/Would-you-sap/ABAP">
+        <span class="rn">ABAP</span>
+        <span class="rd">SAP ABAP 개발 사례·학습 가이드 모음 · 정적 페이지.</span>
+        <span class="rlang">HTML</span>
+      </a>
       <a class="repo" href="https://github.com/Would-you-sap/RAP">
         <span class="rn">RAP</span>
         <span class="rd">RAP 개발 사례·가이드 모음 · 정적 페이지.</span>
