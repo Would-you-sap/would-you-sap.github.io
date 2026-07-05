@@ -97,6 +97,20 @@
   .card.soon .card-go{color:var(--ink-faint)}
   .empty{font-size:14.5px;color:var(--ink-faint);padding:1.2rem 0}
 
+  /* latest posts (직행 링크) */
+  .latest{display:grid;grid-template-columns:1fr;gap:.6rem}
+  .post{display:flex;align-items:center;gap:.85rem;background:var(--surface);border:1px solid var(--line);
+    border-radius:12px;padding:.9rem 1.15rem;transition:border-color .15s,transform .15s}
+  .post:hover{border-color:#C7D6E8;transform:translateX(3px)}
+  .post-topic{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.02em;
+    padding:2px 8px;border-radius:5px;flex:none}
+  .post-topic.sap{background:#EAF2FB;color:var(--sap)} .post-topic.ai{background:#EFEBFA;color:var(--ai)}
+  .post-topic.ui5{background:#E7F3EC;color:var(--ui5)}
+  .post-title{font-size:15.5px;font-weight:650;color:var(--ink);line-height:1.42;flex:1;min-width:0}
+  .post-date{font-family:var(--mono);font-size:12px;color:var(--ink-faint);flex:none}
+  .post .arw{color:var(--accent);font-weight:800;flex:none;font-size:14px;margin-left:-.2rem}
+  .post:hover .arw{color:var(--accent-deep)}
+
   /* repos */
   .repos{display:grid;grid-template-columns:1fr;gap:.7rem}
   .repo{display:flex;align-items:baseline;gap:.9rem;background:var(--surface);border:1px solid var(--line);
@@ -134,6 +148,26 @@
     </div>
   </div>
 </header>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">최신 · Latest <span class="count">2</span></div>
+    <div class="latest">
+      <a class="post" href="./would-you-RAP/password-change-api/">
+        <span class="post-topic sap">RAP</span>
+        <span class="post-title">사용자 패스워드 변경 API 개발 가이드</span>
+        <span class="post-date">2026-07</span>
+        <span class="arw">→</span>
+      </a>
+      <a class="post" href="./sap-ai-case-study/">
+        <span class="post-topic ai">AI</span>
+        <span class="post-title">에이전트 AI로 만든 SAP Fiori 앱</span>
+        <span class="post-date">2026-07</span>
+        <span class="arw">→</span>
+      </a>
+    </div>
+  </div>
+</section>
 
 <section>
   <div class="wrap">
