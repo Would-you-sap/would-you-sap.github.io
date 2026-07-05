@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>would-you-sap — SAP 개발 기록</title>
+<meta name="description" content="SAP 개발자의 기록 — ABAP · RAP/CDS · UI5(Fiori), 그리고 AI 활용. 정리한 글과 사례를 한곳에서.">
+<style>
+  :root{
+    --ground:#F6F7F9; --surface:#FFFFFF; --surface-2:#FBFCFD;
+    --ink:#16181D; --ink-soft:#59627A; --ink-faint:#8A93A6;
+    --line:#E4E7EC; --line-soft:#EEF1F5;
+    --accent:#0B5CAB; --accent-deep:#083E76; --accent-wash:#EAF2FB;
+    --risk:#C0392B; --warn:#C77D0A; --ok:#2E7D46;
+    --sans:'Pretendard','Pretendard Variable','Apple SD Gothic Neo','Malgun Gothic',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+    --mono:ui-monospace,'D2Coding','SFMono-Regular',Consolas,'Courier New',monospace;
+    --measure:52rem;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{background:var(--ground);color:var(--ink);font-family:var(--sans);
+    font-size:17px;line-height:1.75;letter-spacing:-.003em;
+    word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:var(--measure);margin:0 auto;padding:0 24px}
+  a{color:var(--accent);text-decoration:none;border-bottom:1px solid transparent}
+  a:hover{border-bottom-color:var(--accent)}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:3px}
+
+  /* hero */
+  .hero{padding:9vh 0 3.4rem;border-bottom:1px solid var(--line)}
+  .signal{display:flex;gap:7px;margin-bottom:1.4rem}
+  .signal span{width:11px;height:11px;border-radius:50%}
+  .signal .r{background:var(--risk)} .signal .a{background:var(--warn)} .signal .g{background:var(--ok)}
+  .brand{font-family:var(--mono);font-size:13.5px;letter-spacing:.02em;color:var(--accent-deep);font-weight:500}
+  h1{font-size:clamp(34px,6vw,54px);line-height:1.08;letter-spacing:-.025em;font-weight:800;
+    margin:.5rem 0 .9rem}
+  .tagline{font-size:clamp(17px,2.5vw,21px);color:var(--ink-soft);font-weight:500;line-height:1.6;max-width:38rem}
+  .meta{display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;font-size:14px;color:var(--ink-faint);
+    margin-top:1.8rem;padding-top:1.4rem;border-top:1px solid var(--line-soft)}
+  .meta b{color:var(--ink-soft);font-weight:600}
+  .meta a{color:var(--ink-faint);border-bottom:1px solid var(--line)}
+  .meta a:hover{color:var(--accent);border-bottom-color:var(--accent)}
+
+  /* section */
+  section{padding:3.4rem 0;border-bottom:1px solid var(--line)}
+  .eyebrow{display:flex;align-items:center;gap:.6rem;font-size:12.5px;font-weight:700;
+    text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin-bottom:1.6rem}
+  .eyebrow .count{font-family:var(--mono);font-size:11.5px;background:var(--accent-wash);
+    color:var(--accent-deep);padding:2px 8px;border-radius:6px;font-weight:700;letter-spacing:0}
+
+  /* cards */
+  .cards{display:grid;grid-template-columns:1fr;gap:1.1rem}
+  @media(min-width:680px){.cards{grid-template-columns:1fr 1fr}}
+  .card{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);
+    border-radius:16px;overflow:hidden;transition:border-color .15s,box-shadow .15s,transform .15s}
+  .card:hover{border-color:#C7D6E8;box-shadow:0 8px 28px -14px rgba(11,92,171,.28);transform:translateY(-2px)}
+  .card a.card-hit{border:0;color:inherit;display:flex;flex-direction:column;height:100%}
+  .card a.card-hit:hover{border:0}
+  .cover{position:relative;aspect-ratio:16/7;background:
+    radial-gradient(120% 140% at 12% 0%,#0E4F92 0%,#0B5CAB 42%,#083E76 100%);
+    display:flex;align-items:flex-end;padding:16px 18px;color:#fff;overflow:hidden}
+  .cover::after{content:"";position:absolute;inset:0;
+    background:radial-gradient(60% 90% at 88% 18%,rgba(255,255,255,.16),transparent 60%)}
+  .cover .cv-tag{position:relative;font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;
+    background:rgba(255,255,255,.16);padding:3px 9px;border-radius:20px;backdrop-filter:blur(2px)}
+  .cover .cv-dots{position:absolute;top:14px;left:18px;display:flex;gap:6px}
+  .cover .cv-dots span{width:9px;height:9px;border-radius:50%;opacity:.95}
+  .card-body{padding:1.15rem 1.25rem 1.35rem;display:flex;flex-direction:column;gap:.5rem;flex:1}
+  .card-kick{font-size:12.5px;color:var(--ink-faint);font-weight:600;letter-spacing:.01em}
+  .card-title{font-size:19.5px;font-weight:750;line-height:1.32;letter-spacing:-.01em;color:var(--ink)}
+  .card-blurb{font-size:14.5px;color:var(--ink-soft);line-height:1.62;flex:1}
+  .card-go{font-size:13.5px;font-weight:700;color:var(--accent);margin-top:.4rem;letter-spacing:.01em}
+  .card:hover .card-go{color:var(--accent-deep)}
+  .card.soon{opacity:.72}
+  .card.soon .cover{background:linear-gradient(135deg,#8A93A6,#59627A)}
+  .card.soon .card-go{color:var(--ink-faint)}
+
+  /* repo list */
+  .repos{display:grid;grid-template-columns:1fr;gap:.7rem}
+  .repo{display:flex;align-items:baseline;gap:.9rem;background:var(--surface);border:1px solid var(--line);
+    border-radius:12px;padding:.95rem 1.15rem;transition:border-color .15s}
+  .repo:hover{border-color:#C7D6E8}
+  .repo .rn{font-family:var(--mono);font-size:14.5px;font-weight:600;color:var(--accent-deep);flex:none}
+  .repo .rd{font-size:14px;color:var(--ink-soft);line-height:1.5}
+  .repo .rlang{margin-left:auto;font-size:12px;color:var(--ink-faint);font-family:var(--mono);flex:none;white-space:nowrap}
+
+  .note{background:var(--surface-2);border:1px dashed var(--line);border-radius:12px;
+    padding:1rem 1.2rem;margin-top:1.6rem;font-size:14.5px;color:var(--ink-soft);line-height:1.7}
+  .note b{color:var(--ink)}
+
+  footer{padding:2.6rem 0 4rem;font-size:13.5px;color:var(--ink-faint)}
+  footer .fl{display:flex;flex-wrap:wrap;gap:.5rem 1.4rem;margin-bottom:.6rem}
+  footer a{color:var(--ink-soft);border-bottom:1px solid var(--line)}
+  footer a:hover{color:var(--accent);border-bottom-color:var(--accent)}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="signal"><span class="r"></span><span class="a"></span><span class="g"></span></div>
+    <div class="brand">would-you-sap</div>
+    <h1>SAP 개발 기록</h1>
+    <p class="tagline">ABAP · RAP/CDS · UI5(Fiori), 그리고 AI 활용.<br>직접 해보며 정리한 글과 사례를 한곳에 모읍니다.</p>
+    <div class="meta">
+      <span><b>강우주</b> · Dev Unit</span>
+      <span>ABAP · RAP · CDS · UI5 · AI(MCP·Skill)</span>
+      <span><a href="https://github.com/Would-you-sap">GitHub ↗</a></span>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">글 · Writings <span class="count">1</span></div>
+    <div class="cards">
+
+      <div class="card">
+        <a class="card-hit" href="./sap-ai-case-study/">
+          <div class="cover">
+            <div class="cv-dots"><span style="background:#FF6B5E"></span><span style="background:#FFD166"></span><span style="background:#7CE0A3"></span></div>
+            <span class="cv-tag">CASE STUDY · 2026-07</span>
+          </div>
+          <div class="card-body">
+            <div class="card-kick">Agentic AI · SAP Fiori</div>
+            <div class="card-title">에이전트 AI로 만든 SAP Fiori 앱</div>
+            <p class="card-blurb">“AI가 개발을 어떻게 바꾸는가”를 SAP 개발자 입장에서 직접 검증한 사례. Skill·MCP를 활용해 클린코어 기반 RAP + Fiori 앱을 실제로 구현한 과정과, 그 과정에서 얻은 생각을 정리했습니다.</p>
+            <span class="card-go">읽기 →</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="card soon">
+        <div class="card-hit" style="cursor:default">
+          <div class="cover">
+            <div class="cv-dots"><span style="background:#D6DCE6"></span><span style="background:#D6DCE6"></span><span style="background:#D6DCE6"></span></div>
+            <span class="cv-tag">COMING SOON</span>
+          </div>
+          <div class="card-body">
+            <div class="card-kick">다음 글</div>
+            <div class="card-title">준비 중입니다</div>
+            <p class="card-blurb">ABAP·RAP/CDS·UI5, 그리고 AI 활용에서 얻은 다음 이야기를 이어서 정리합니다.</p>
+            <span class="card-go">준비 중</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">코드 · Repositories</div>
+    <div class="repos">
+      <a class="repo" href="https://github.com/Would-you-sap/ui5">
+        <span class="rn">ui5</span>
+        <span class="rd">SAP UI5 / Fiori 앱 워크스페이스 — freestyle · FPM Custom Page.</span>
+        <span class="rlang">JavaScript</span>
+      </a>
+      <a class="repo" href="https://github.com/Would-you-sap/sap-ai-case-study">
+        <span class="rn">sap-ai-case-study</span>
+        <span class="rd">위 사례 문서의 소스 · 정적 페이지.</span>
+        <span class="rlang">HTML</span>
+      </a>
+    </div>
+    <div class="note">
+      <b>이 사이트는</b> 정리한 글을 한곳에서 모아보는 허브입니다. 글이 늘어나면 <b>글 · Writings</b> 목록에 카드가 추가됩니다.
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fl">
+      <a href="https://github.com/Would-you-sap">github.com/Would-you-sap</a>
+      <a href="./sap-ai-case-study/">사례: 에이전트 AI로 만든 SAP Fiori 앱</a>
+    </div>
+    <div>© 2026 would-you-sap · SAP 개발 기록</div>
+  </div>
+</footer>
+
+</body>
+</html>
