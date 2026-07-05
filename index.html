@@ -37,10 +37,6 @@
   .answer{font-size:clamp(19px,2.9vw,26px);font-weight:700;letter-spacing:-.015em;color:var(--accent-deep);
     line-height:1.35;margin:0 0 .9rem}
   .tagline{font-size:clamp(16px,2.3vw,19px);color:var(--ink-soft);font-weight:500;line-height:1.6;max-width:38rem}
-  .domains{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.7rem}
-  .domains .d{font-family:var(--mono);font-size:12.5px;font-weight:600;letter-spacing:.02em;
-    padding:4px 11px;border-radius:20px;border:1px solid var(--line);background:var(--surface);color:var(--ink-soft)}
-  .domains .d .dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:6px;vertical-align:middle}
   .meta{display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;font-size:14px;color:var(--ink-faint);
     margin-top:1.7rem;padding-top:1.4rem;border-top:1px solid var(--line-soft)}
   .meta b{color:var(--ink-soft);font-weight:600}
@@ -50,27 +46,17 @@
   /* section */
   section{padding:3.2rem 0;border-bottom:1px solid var(--line)}
   .eyebrow{display:flex;align-items:center;gap:.6rem;font-size:12.5px;font-weight:700;
-    text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin-bottom:1.3rem}
+    text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin-bottom:.4rem}
   .eyebrow .count{font-family:var(--mono);font-size:11.5px;background:var(--accent-wash);
     color:var(--accent-deep);padding:2px 8px;border-radius:6px;font-weight:700;letter-spacing:0}
+  .sec-lead{font-size:14.5px;color:var(--ink-faint);margin-bottom:1.5rem;line-height:1.5}
 
-  /* filter chips */
-  .filters{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem}
-  .chip{font-family:var(--mono);font-size:12.5px;font-weight:600;letter-spacing:.02em;cursor:pointer;
-    padding:5px 13px;border-radius:20px;border:1px solid var(--line);background:var(--surface);color:var(--ink-soft);
-    transition:all .13s;border-bottom:1px solid var(--line)}
-  .chip:hover{border-color:#C7D6E8;color:var(--accent-deep)}
-  .chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
-  .chip .dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:6px;vertical-align:middle}
-  .chip[aria-pressed="true"] .dot{background:#fff !important}
-
-  /* cards */
-  .cards{display:grid;grid-template-columns:1fr;gap:1.1rem}
+  /* cards (새 글 — 주인공) */
+  .cards{display:grid;grid-template-columns:1fr;gap:1.2rem}
   @media(min-width:680px){.cards{grid-template-columns:1fr 1fr}}
   .card{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);
     border-radius:16px;overflow:hidden;transition:border-color .15s,box-shadow .15s,transform .15s}
-  .card:hover{border-color:#C7D6E8;box-shadow:0 8px 28px -14px rgba(11,92,171,.28);transform:translateY(-2px)}
-  .card[hidden]{display:none}
+  .card:hover{border-color:#C7D6E8;box-shadow:0 10px 32px -14px rgba(11,92,171,.32);transform:translateY(-3px)}
   .card a.card-hit{border:0;color:inherit;display:flex;flex-direction:column;height:100%}
   .card a.card-hit:hover{border:0}
   .cover{position:relative;aspect-ratio:16/7;background:
@@ -83,33 +69,24 @@
     background:rgba(255,255,255,.16);padding:3px 9px;border-radius:20px;backdrop-filter:blur(2px)}
   .cover .cv-dots{position:absolute;top:14px;left:18px;display:flex;gap:6px}
   .cover .cv-dots span{width:9px;height:9px;border-radius:50%;opacity:.95}
-  .card-body{padding:1.1rem 1.25rem 1.35rem;display:flex;flex-direction:column;gap:.5rem;flex:1}
+  .card-body{padding:1.15rem 1.3rem 1.4rem;display:flex;flex-direction:column;gap:.5rem;flex:1}
   .tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:.15rem}
   .tag{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.02em;padding:2px 8px;border-radius:5px}
   .tag.sap{background:#EAF2FB;color:var(--sap)} .tag.ai{background:#EFEBFA;color:var(--ai)}
   .tag.ui5{background:#E7F3EC;color:var(--ui5)} .tag.etc{background:#EEF1F5;color:var(--etc)}
-  .card-title{font-size:19.5px;font-weight:750;line-height:1.32;letter-spacing:-.01em;color:var(--ink)}
+  .card-title{font-size:20px;font-weight:750;line-height:1.32;letter-spacing:-.01em;color:var(--ink)}
   .card-blurb{font-size:14.5px;color:var(--ink-soft);line-height:1.62;flex:1}
   .card-go{font-size:13.5px;font-weight:700;color:var(--accent);margin-top:.4rem;letter-spacing:.01em}
   .card:hover .card-go{color:var(--accent-deep)}
-  .card.soon{opacity:.72}
-  .card.soon .cover{background:linear-gradient(135deg,#8A93A6,#59627A)}
-  .card.soon .card-go{color:var(--ink-faint)}
-  .empty{font-size:14.5px;color:var(--ink-faint);padding:1.2rem 0}
 
-  /* latest posts (직행 링크) */
-  .latest{display:grid;grid-template-columns:1fr;gap:.6rem}
-  .post{display:flex;align-items:center;gap:.85rem;background:var(--surface);border:1px solid var(--line);
-    border-radius:12px;padding:.9rem 1.15rem;transition:border-color .15s,transform .15s}
-  .post:hover{border-color:#C7D6E8;transform:translateX(3px)}
-  .post-topic{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.02em;
-    padding:2px 8px;border-radius:5px;flex:none}
-  .post-topic.sap{background:#EAF2FB;color:var(--sap)} .post-topic.ai{background:#EFEBFA;color:var(--ai)}
-  .post-topic.ui5{background:#E7F3EC;color:var(--ui5)}
-  .post-title{font-size:15.5px;font-weight:650;color:var(--ink);line-height:1.42;flex:1;min-width:0}
-  .post-date{font-family:var(--mono);font-size:12px;color:var(--ink-faint);flex:none}
-  .post .arw{color:var(--accent);font-weight:800;flex:none;font-size:14px;margin-left:-.2rem}
-  .post:hover .arw{color:var(--accent-deep)}
+  /* topics (주제 — 보조 칩) */
+  .topics{display:flex;flex-wrap:wrap;gap:.7rem}
+  .topic{display:inline-flex;align-items:center;gap:.55rem;background:var(--surface);border:1px solid var(--line);
+    border-radius:22px;padding:.6rem 1.15rem;font-size:14.5px;font-weight:650;color:var(--ink);
+    border-bottom:1px solid var(--line);transition:border-color .15s,transform .15s,box-shadow .15s}
+  .topic:hover{border-color:#C7D6E8;transform:translateY(-2px);box-shadow:0 6px 18px -12px rgba(11,92,171,.3);color:var(--accent-deep)}
+  .topic .dot{width:9px;height:9px;border-radius:50%;flex:none}
+  .topic .tc{font-family:var(--mono);font-size:12px;color:var(--ink-faint);font-weight:600}
 
   /* repos */
   .repos{display:grid;grid-template-columns:1fr;gap:.7rem}
@@ -135,12 +112,6 @@
     <h1>Would you SAP?</h1>
     <p class="answer">— 네, 직접 해봤습니다.</p>
     <p class="tagline">SAP · AI · UI5, 만들며 배운 것을 남깁니다.</p>
-    <div class="domains">
-      <span class="d"><span class="dot" style="background:var(--sap)"></span>SAP</span>
-      <span class="d"><span class="dot" style="background:var(--ai)"></span>AI</span>
-      <span class="d"><span class="dot" style="background:var(--ui5)"></span>UI5</span>
-      <span class="d"><span class="dot" style="background:var(--etc)"></span>기타</span>
-    </div>
     <div class="meta">
       <span><b>강우주</b> · Dev Unit</span>
       <span>ABAP · RAP · CDS · UI5 · AI(MCP·Skill)</span>
@@ -149,55 +120,29 @@
   </div>
 </header>
 
+<!-- 새 글 : 개별 글로 바로 가는 큰 카드 (주인공) -->
 <section>
   <div class="wrap">
-    <div class="eyebrow">최신 · Latest <span class="count">2</span></div>
-    <div class="latest">
-      <a class="post" href="./would-you-RAP/password-change-api/">
-        <span class="post-topic sap">RAP</span>
-        <span class="post-title">사용자 패스워드 변경 API 개발 가이드</span>
-        <span class="post-date">2026-07</span>
-        <span class="arw">→</span>
-      </a>
-      <a class="post" href="./sap-ai-case-study/">
-        <span class="post-topic ai">AI</span>
-        <span class="post-title">에이전트 AI로 만든 SAP Fiori 앱</span>
-        <span class="post-date">2026-07</span>
-        <span class="arw">→</span>
-      </a>
-    </div>
-  </div>
-</section>
+    <div class="eyebrow">새 글 · Latest <span class="count">2</span></div>
+    <p class="sec-lead">가장 최근 글부터. 카드를 누르면 바로 글로 이동합니다.</p>
+    <div class="cards">
 
-<section>
-  <div class="wrap">
-    <div class="eyebrow">기록 · Works <span class="count" id="cnt">3</span></div>
-    <div class="filters" role="group" aria-label="카테고리 필터">
-      <button class="chip" data-filter="all" aria-pressed="true">전체</button>
-      <button class="chip" data-filter="sap" aria-pressed="false"><span class="dot" style="background:var(--sap)"></span>SAP</button>
-      <button class="chip" data-filter="ai" aria-pressed="false"><span class="dot" style="background:var(--ai)"></span>AI</button>
-      <button class="chip" data-filter="ui5" aria-pressed="false"><span class="dot" style="background:var(--ui5)"></span>UI5</button>
-      <button class="chip" data-filter="etc" aria-pressed="false"><span class="dot" style="background:var(--etc)"></span>기타</button>
-    </div>
-
-    <div class="cards" id="grid">
-
-      <div class="card" data-domains="sap">
-        <a class="card-hit" href="./would-you-RAP/">
+      <div class="card">
+        <a class="card-hit" href="./would-you-RAP/password-change-api/">
           <div class="cover">
             <div class="cv-dots"><span style="background:#FF6B5E"></span><span style="background:#FFD166"></span><span style="background:#7CE0A3"></span></div>
-            <span class="cv-tag">TOPIC · RAP</span>
+            <span class="cv-tag">RAP · 2026-07</span>
           </div>
           <div class="card-body">
-            <div class="tags"><span class="tag sap">SAP</span></div>
-            <div class="card-title">RAP</div>
-            <p class="card-blurb">SAP RAP(ABAP RESTful Application Programming) 개발 사례·가이드 모음. 클린코어 위에서 서비스를 만드는 과정을 하나씩 직접 구현하며 남긴 매뉴얼형 문서들입니다. (현재 1편 — 사용자 패스워드 변경 API)</p>
+            <div class="tags"><span class="tag sap">RAP</span><span class="tag sap">OData</span></div>
+            <div class="card-title">사용자 패스워드 변경 API 개발 가이드</div>
+            <p class="card-blurb">RAP Unmanaged + Deep-Create 기반 OData V2 / V4 서비스. 문제 정의·기술 선택부터 핵심 FM, 아키텍처 설계, 정식 구현, 게시·Basis 협업까지 설계부터 운영까지 단계별로 정리했습니다.</p>
             <span class="card-go">읽기 →</span>
           </div>
         </a>
       </div>
 
-      <div class="card" data-domains="ai sap">
+      <div class="card">
         <a class="card-hit" href="./sap-ai-case-study/">
           <div class="cover ai">
             <div class="cv-dots"><span style="background:#FF6B5E"></span><span style="background:#FFD166"></span><span style="background:#7CE0A3"></span></div>
@@ -212,23 +157,20 @@
         </a>
       </div>
 
-      <div class="card" data-domains="ui5 sap">
-        <a class="card-hit" href="https://github.com/Would-you-sap/ui5">
-          <div class="cover">
-            <div class="cv-dots"><span style="background:#FF6B5E"></span><span style="background:#FFD166"></span><span style="background:#7CE0A3"></span></div>
-            <span class="cv-tag">DEMO · Fiori Elements</span>
-          </div>
-          <div class="card-body">
-            <div class="tags"><span class="tag ui5">UI5</span><span class="tag sap">SAP</span></div>
-            <div class="card-title">대리점 매출현황 — FPM Custom Page</div>
-            <p class="card-blurb">SAPUI5 1.149 · Fiori Elements Custom Page(FPM) 조회 데모. KPI·차트·신호등 상태와 값 도움말·인라인 생성까지, mock 데이터로 바로 실행됩니다.</p>
-            <span class="card-go">GitHub에서 보기 →</span>
-          </div>
-        </a>
-      </div>
-
     </div>
-    <p class="empty" id="empty" hidden>이 카테고리는 아직 준비 중입니다.</p>
+  </div>
+</section>
+
+<!-- 주제 : 카테고리로 둘러보기 (보조 칩) -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">주제 · Topics <span class="count">3</span></div>
+    <p class="sec-lead">주제별로 모아 봅니다. 각 주제 아래에 사례·가이드가 쌓입니다.</p>
+    <div class="topics">
+      <a class="topic" href="./would-you-RAP/"><span class="dot" style="background:var(--sap)"></span>RAP<span class="tc">1편</span></a>
+      <a class="topic" href="https://github.com/Would-you-sap/ui5"><span class="dot" style="background:var(--ui5)"></span>UI5<span class="tc">데모</span></a>
+      <a class="topic" href="./sap-ai-case-study/"><span class="dot" style="background:var(--ai)"></span>AI<span class="tc">1편</span></a>
+    </div>
   </div>
 </section>
 
@@ -259,36 +201,11 @@
   <div class="wrap">
     <div class="fl">
       <a href="https://github.com/Would-you-sap">github.com/Would-you-sap</a>
-      <a href="./sap-ai-case-study/">사례: 에이전트 AI로 만든 SAP Fiori 앱</a>
+      <a href="./would-you-RAP/password-change-api/">새 글: 사용자 패스워드 변경 API 개발 가이드</a>
     </div>
     <div>© 2026 would-you · SAP · AI · UI5 개발 기록</div>
   </div>
 </footer>
-
-<script>
-  (function(){
-    var chips=[].slice.call(document.querySelectorAll('.chip'));
-    var cards=[].slice.call(document.querySelectorAll('#grid .card'));
-    var cnt=document.getElementById('cnt');
-    var empty=document.getElementById('empty');
-    function apply(f){
-      var shown=0;
-      cards.forEach(function(c){
-        var ok = f==='all' || (' '+c.getAttribute('data-domains')+' ').indexOf(' '+f+' ')>-1;
-        c.hidden=!ok; if(ok) shown++;
-      });
-      cnt.textContent=shown;
-      empty.hidden = shown>0;
-    }
-    chips.forEach(function(ch){
-      ch.addEventListener('click',function(){
-        chips.forEach(function(x){x.setAttribute('aria-pressed','false');});
-        ch.setAttribute('aria-pressed','true');
-        apply(ch.getAttribute('data-filter'));
-      });
-    });
-  })();
-</script>
 
 </body>
 </html>
