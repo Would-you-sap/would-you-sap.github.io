@@ -76,6 +76,7 @@
   .tag.ui5{background:#E7F3EC;color:var(--ui5)} .tag.etc{background:#EEF1F5;color:var(--etc)}
   .tag.abap{background:#E9EBF7;color:#3D4EA8}
   .cover.abap{background:radial-gradient(120% 140% at 12% 0%,#4C5BC0 0%,#3D4EA8 45%,#242E66 100%)}
+  .cover.quick{background:radial-gradient(120% 140% at 12% 0%,#1B8FA8 0%,#12758C 45%,#0A4A5C 100%)}
   .card-title{font-size:20px;font-weight:750;line-height:1.32;letter-spacing:-.01em;color:var(--ink)}
   .card-blurb{font-size:14.5px;color:var(--ink-soft);line-height:1.62;flex:1}
   .card-go{font-size:13.5px;font-weight:700;color:var(--accent);margin-top:.4rem;letter-spacing:.01em}
@@ -124,9 +125,24 @@
 <!-- 새 글 : 개별 글로 바로 가는 큰 카드 (주인공) -->
 <section>
   <div class="wrap">
-    <div class="eyebrow">새 글 · Latest <span class="count">5</span></div>
+    <div class="eyebrow">새 글 · Latest <span class="count">6</span></div>
     <p class="sec-lead">가장 최근 글부터. 카드를 누르면 바로 글로 이동합니다.</p>
     <div class="cards">
+
+      <div class="card">
+        <a class="card-hit" href="./ui5/ai-quick-dashboard/">
+          <div class="cover quick">
+            <div class="cv-dots"><span style="background:#FF6B5E"></span><span style="background:#FFD166"></span><span style="background:#7CE0A3"></span></div>
+            <span class="cv-tag">CASE STUDY · AI×MCP 시리즈 3편</span>
+          </div>
+          <div class="card-body">
+            <div class="tags"><span class="tag sap">SAP</span><span class="tag ai">AI</span></div>
+            <div class="card-title">Amazon Quick과 SAP의 첫 대화</div>
+            <p class="card-blurb">자연어 요청 한 줄로 온프레미스 S/4HANA의 재무 데이터를 실시간 조회해 대시보드 3종을 만들기까지 — MCP 연동, 보안 통제(차단 목록·승인·집계), 그리고 사람 검증이 잡아낸 AI의 집계 누락까지 한 시간의 기록. (인터랙티브 대시보드 포함)</p>
+            <span class="card-go">읽기 →</span>
+          </div>
+        </a>
+      </div>
 
       <div class="card">
         <a class="card-hit" href="./SAP/adt-mcp-dump-troubleshooting/">
@@ -216,7 +232,7 @@
       <a class="topic" href="./SAP/"><span class="dot" style="background:var(--sap)"></span>SAP<span class="tc">1편</span></a>
       <a class="topic" href="./ABAP/"><span class="dot" style="background:#3D4EA8"></span>ABAP<span class="tc">2편</span></a>
       <a class="topic" href="./RAP/"><span class="dot" style="background:var(--sap)"></span>RAP<span class="tc">1편</span></a>
-      <a class="topic" href="./ui5/"><span class="dot" style="background:var(--ui5)"></span>UI5<span class="tc">2편</span></a>
+      <a class="topic" href="./ui5/"><span class="dot" style="background:var(--ui5)"></span>UI5<span class="tc">3편</span></a>
     </div>
   </div>
 </section>
